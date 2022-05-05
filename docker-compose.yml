@@ -1,0 +1,9 @@
+version: "3"
+services:
+  client:
+    image: node:16.15.0-bullseye-slim
+    volumes:
+      - ./client:/client:delegated
+    working_dir: /client
+    user: node
+    command: ["tail", "-f", "/dev/null"]
