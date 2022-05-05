@@ -2,6 +2,7 @@
 
 set -eux
 
+docker-compose config
 docker-compose up --detach
 docker-compose exec --no-TTY client npm ci --no-progress
 
