@@ -7,7 +7,6 @@ services:
         source: ./client
         target: /client
     working_dir: /client
-    user: node
     command: ["tail", "-f", "/dev/null"]
     environment:
       - NO_UPDATE_NOTIFIER=true
