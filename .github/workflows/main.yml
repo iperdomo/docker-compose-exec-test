@@ -5,17 +5,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Check config
-        run: docker-compose config
-      - name: Start system
-        run: docker-compose up --detach
-      - name: npm ci
-        run: docker-compose exec --no-TTY client npm ci --progress
-      - name: Checks
-        run: |
-          if [[ -d "client/node_modules" ]]; then
-            exit 0
-          else
-            echo "node_modules not present"
-            exit 1
-          fi
+      - name: Build and check
+        run: ./ci/build.sh
