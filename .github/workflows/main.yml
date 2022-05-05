@@ -13,7 +13,7 @@ jobs:
         run: docker-compose exec --no-TTY client npm ci --progress
       - name: Checks
         run: |
-          if [[ -d "client/node_modules" ]] then;
+          if [[ -d "client/node_modules" ]]; then
             exit 0
           else
             echo "node_modules not present"
