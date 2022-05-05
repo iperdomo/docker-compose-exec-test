@@ -3,5 +3,5 @@
 set -eux
 
 docker-compose up --detach
-docker-compose exec client npm ci --no-progress
+docker-compose exec --no-TTY client npm ci --no-progress
 find client/
