@@ -1,12 +1,11 @@
 version: "3"
 services:
-  client:
-    image: node:16.15.0-bullseye-slim
+  alpine:
+    image: alpine:3.15
     volumes:
       - type: bind
-        source: ./client
-        target: /client
-    working_dir: /client
+        source: .
+        target: /bind
+      - ./:/default
+      - ./:/delegated:delegated
     command: ["tail", "-f", "/dev/null"]
-    environment:
-      - NO_UPDATE_NOTIFIER=true
