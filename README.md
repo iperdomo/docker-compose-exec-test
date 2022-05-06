@@ -1,7 +1,7 @@
 # docker-compose-exec-test
 Testing docker-compose exec + bind mounts on GitHub actions
 
-# `-T` vs `--no-TTY`
+## `-T` vs `--no-TTY`
 
 When using `docker-compose exec` you need to disable the automatic TTY allocation. In version
 `v1.29.2` only `-T` flag is available and `--no-TTY` is _ignored_
