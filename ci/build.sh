@@ -6,7 +6,7 @@ docker-compose config
 docker-compose up -d
 
 node-exec() {
-	docker-compose exec -T node "$@"
+	docker-compose exec --no-TTY node "$@"
 }
 
 test-file() {
