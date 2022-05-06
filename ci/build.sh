@@ -5,12 +5,22 @@ set -eux
 docker-compose config
 docker-compose up -d
 
-docker-compose exec -T alpine touch /bind/bind.txt
-docker-compose exec -T alpine touch /default/default.txt
-docker-compose exec -T alpine touch /delegated/delegated.txt
+node-exec() {
+	docker-compose exec -T node "$@"
+}
 
-[[ -f "bind.txt" ]] || { echo "bind.txt not found"; exit 1; }
-[[ -f "default.txt" ]] || { echo "default.txt not found"; exit 1; }
-[[ -f "delegated.txt" ]] || { echo "delegated.txt not found"; exit 1; }
+test-file() {
+	if [[ -f "${1}" ]]; then
+		echo "${1} found"
+	else
+        echo "${1} not found"
+        exit 1
+	fi
+}
 
+node-exec npm ci --no-progress
+test-file client/node_modules/.package-lock.json
+
+node-exec npm run build
+test-file client/build/index.html
 echo "Done"
