@@ -4,11 +4,12 @@ set -eux
 
 docker --version
 docker-compose --version
-docker-compose config
-docker-compose up -d
+docker compose version
+docker compose config
+docker compose up -d
 
 node-exec() {
-	docker-compose exec --no-TTY node "$@"
+	docker compose exec --no-TTY node "$@"
 }
 
 test-file() {
