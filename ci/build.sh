@@ -2,6 +2,8 @@
 
 set -eux
 
+docker --version
+docker-compose --version
 docker-compose config
 docker-compose up -d
 
